@@ -1,0 +1,2 @@
+class BookClubUser < ApplicationRecord
+end
