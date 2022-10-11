@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_111617) do
+ActiveRecord::Schema.define(version: 2022_10_11_124602) do
+
+  create_table "book_club_books", force: :cascade do |t|
+    t.integer "book_club_id"
+    t.integer "book_id"
+    t.string "archived"
+    t.string "status"
+    t.string "suggested_by"
+    t.string "current"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "book_club_users", force: :cascade do |t|
     t.integer "user_id"
@@ -22,6 +33,18 @@ ActiveRecord::Schema.define(version: 2022_10_11_111617) do
 
   create_table "book_clubs", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.integer "book_club_book_id"
+    t.string "meeting_url"
+    t.string "notes"
+    t.string "complete"
+    t.string "priority"
+    t.string "pages"
+    t.datetime "deadline"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
