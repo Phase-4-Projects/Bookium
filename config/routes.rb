@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :questions
   resources :book_club_users
   resources :book_clubs
   resources :users
