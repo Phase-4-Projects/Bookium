@@ -35,4 +35,15 @@ class BookClubsController < ApplicationController
  
          render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
      end
+
+     private
+
+     def bookclub_params
+         params.permit(:name)
+     end
+ 
+     def set_bookclub
+         @bookclub = Bookclub.find(params[:id])
+     end
+ 
 end
