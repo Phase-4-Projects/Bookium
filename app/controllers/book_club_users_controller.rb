@@ -1,0 +1,2 @@
+class BookClubUsersController < ApplicationController
+end
