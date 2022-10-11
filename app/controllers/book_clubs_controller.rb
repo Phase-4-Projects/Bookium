@@ -7,4 +7,8 @@ class BookClubsController < ApplicationController
     def update
         bookclub = Bookclub.find(params[:id])
         bookclub.update(bookclub_params)
+
+         #check if admin is changed
+         admin_bookclub_user = bookclub.bookclub_users.find {|user| user.isAdmin == true }
+         admin_id = admin_bookclub_user.user_id
 end
