@@ -25,5 +25,12 @@ class UsersController < ApplicationController
     render json: user, status: :accepted
    end
 
+   def destroy
+    @current_user.destroy
+    head :no_content
+   end
+
+
+
     
 end
