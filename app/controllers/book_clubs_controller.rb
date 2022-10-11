@@ -24,4 +24,15 @@ class BookClubsController < ApplicationController
                 bookclub_user = bookclub.bookclub_users.find_by(user_id: user_id)
                 bookclub_user.destroy
             end
+        end
+
+         # add users if needed
+         if !params[:add_users].empty?
+            params[:add_users].each do |user_id|
+                 bookclub.bookclub_users.create(user_id: user_id, isAdmin: false)
+             end
+         end
+ 
+         render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
+     end
 end
