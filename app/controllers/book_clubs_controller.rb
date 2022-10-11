@@ -36,14 +36,18 @@ class BookClubsController < ApplicationController
          render json: bookclub, include: ['users', 'bookclub_books', 'bookclub_books.book', 'bookclub_books.goals', 'bookclub_books.guide_questions', 'bookclub_books.guide_questions.comments'], status: :accepted
      end
 
-     private
+    private
 
-     def bookclub_params
-         params.permit(:name)
-     end
+    def bookclub_params
+        params.permit(:name)
+    end
  
-     def set_bookclub
-         @bookclub = Bookclub.find(params[:id])
-     end
+    def set_bookclub
+        @bookclub = Bookclub.find(params[:id])
+    end
+
+    def render_not_found_response
+        render json: { error: 'Book Club Not Found' }, status: :not_found
+    end
  
 end
