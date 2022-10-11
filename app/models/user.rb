@@ -1,4 +1,4 @@
 class User < ApplicationRecord
-    has many book club users
-    has many comments
+    has_many :book_club_users
+    has_many :comments
 end
