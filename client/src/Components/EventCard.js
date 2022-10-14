@@ -25,7 +25,7 @@ class EventCard extends Component {
     if (user_event.length !== 0) {
         let id = user_event[0].id
         console.log(id)
-        fetch(`http://localhost:3000/user_events/${id}`, {
+        fetch(`/user_events/${id}`, {
           method: "DELETE",
           headers: {
                "Content-Type": "application/json"

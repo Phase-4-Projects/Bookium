@@ -8,7 +8,7 @@ import { updateReviews } from '../Redux/actions.js'
 class ReviewContainer extends Component {
 
   searchHandler = (search) => {
-    fetch('http://localhost:3000/reviews')
+    fetch('/reviews')
     .then(resp => resp.json())
     .then(reviews => {
       let reviews_new = reviews.filter(review => review.book.title.toLowerCase().includes(search.toLowerCase()))

@@ -18,15 +18,15 @@ class UserFeed extends Component {
         city: e.target.city.value,
         state: e.target.state.value,
         zipcode: e.target.zipcode.value,
-        date: e.target.date.value,
+        // date: e.target.date.value,
         time: e.target.time.value,
         description: e.target.description.value,
-        host_id: this.props.user.id
+        user_id: this.props.user.id
       })
     }
-    fetch('http://localhost:3000/events', options)
+    fetch('/events', options)
     .then(resp => resp.json())
-    .then(resp => fetch('http://localhost:3000/user_events', {
+    .then(resp => fetch('/user_events', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
       body: JSON.stringify({

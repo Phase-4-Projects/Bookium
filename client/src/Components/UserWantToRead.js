@@ -18,7 +18,7 @@ class UserWantToRead extends Component {
   deleteBook = (obj) => {
     let choosen_user_book = this.props.wantToRead.filter(user_book => user_book.book_id === obj.id)
     let id = choosen_user_book[0].id
-      fetch(`http://localhost:3000/user_books/${id}`, {
+      fetch(`/user_books/${id}`, {
         method: "DELETE"})
         .then(resp => resp.json())
         .then(resp => {

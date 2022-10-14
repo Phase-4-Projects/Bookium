@@ -9,7 +9,7 @@ import { fetchBookClubs } from '../Redux/actions.js'
 class EventsContainer extends Component {
 
   searchHandler = (search) => {
-    fetch('http://localhost:3000/events')
+    fetch('/events')
     .then(resp => resp.json())
     .then(clubs => {
       let new_clubs = clubs.filter(club => club.zipcode === search)

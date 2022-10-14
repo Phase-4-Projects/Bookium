@@ -41,13 +41,13 @@ class UserBookCard extends Component {
         user_id: e.target.userid.value
       })
     }
-    fetch('http://localhost:3000/reviews', options)
+    fetch('/reviews', options)
   }
 
   handleChangeCategory = (e, book) => {
     e.preventDefault()
     let user_book = this.props.user.user_books.filter(user_book => user_book.book_id === book.id)
-    fetch(`http://localhost:3000/user_books/${user_book[0].id}`, {
+    fetch(`/user_books/${user_book[0].id}`, {
       method: "PATCH",
       headers: {
            "Content-Type": "application/json"
@@ -64,7 +64,7 @@ class UserBookCard extends Component {
     this.setState({
       favorited: new_favorite
     })
-    fetch(`http://localhost:3000/books/${obj.id}`, {
+    fetch(`/books/${obj.id}`, {
       method: "PATCH",
       headers: {
         'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`

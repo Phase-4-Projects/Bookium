@@ -6,7 +6,7 @@ import { updateComments } from '../Redux/actions.js'
 class CommentsContainer extends Component {
 
   componentDidMount() {
-    fetch(`http://localhost:3000/events/${this.props.club.id}`)
+    fetch(`/events/${this.props.club.id}`)
       .then(resp => resp.json())
       .then(resp => {
         let reversed = resp.comments && resp.comments.reverse()
@@ -17,7 +17,7 @@ class CommentsContainer extends Component {
 
   postComment = (e) => {
     e.preventDefault()
-    fetch('http://localhost:3000/comments', {
+    fetch('/comments', {
       method: "POST",
       headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
       body: JSON.stringify({

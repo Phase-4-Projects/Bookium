@@ -15,9 +15,9 @@ class BookCard extends Component {
         image:  this.props.bookObj.volumeInfo.imageLinks.thumbnail,
       })
     }
-      fetch('http://localhost:3000/books', options)
+      fetch('/books', options)
       .then(resp => resp.json())
-      .then(book => fetch('http://localhost:3000/user_books', {
+      .then(book => fetch('/user_books', {
         method: 'POST',
         headers: {'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}`},
         body: JSON.stringify({
