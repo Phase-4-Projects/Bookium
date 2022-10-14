@@ -8,27 +8,28 @@
  
 ## About
 
- -Create an account/ Login with a username and password if an exisiting user
+ - Create an account/ Login with a username and password if an exisiting user
 
- -Search for books using the Google Books API, add a book from search which will appear in "Want to read" section
+ - Search for books using the Google Books API, add a book from search which will appear in "Want to read" section
 
- -Each user has a "Read", "Currently Reading", and "Want to read" sections
+ - Each user has a "Read", "Currently Reading", and "Want to read" sections
 
- -For each of the user's book, users can click image for more information, leave a review, favorite, and change its category
+ - For each of the user's book, users can click image for more information, leave a review, favorite, and change its category
 
- -Can filter books from A-Z, Z-A or by favorited books
+ - Can filter books from A-Z, Z-A or by favorited books
 
- -Users can create a new book club or search for book clubs using their zip code
+ - Users can create a new book club or search for book clubs using their zip code
 
- -Can join a bookclub or leave a bookclub if already a member 
+ - Can join a bookclub or leave a bookclub if already a member 
 
- -On a bookclub's page, there is an information snippet including attendees, address, time, decription and name of the host. Bookclub pages also include a discussion forum where users can post comments about the bookclub.
- Users have the ability to search for reviews by entering the title of a book
+ - On a bookclub's page, there is an information snippet including attendees, address, time, decription and name of the host. Bookclub pages also include    a discussion forum where users can post comments about the bookclub.
+ 
+  - Users have the ability to search for reviews by entering the title of a book
 
 
 ## Requirements
 
-- Ruby 2.7.4
+- Ruby 2.7. 
 - NodeJS (v16), and npm
 - Heroku CLI
 - Postgresql
