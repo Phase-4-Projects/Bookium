@@ -1,21 +1,19 @@
-
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { signUpAndFetch } from '../Redux/actions.js'
 import { connect } from 'react-redux'
 
 class SignUp extends Component {
 
-  // handleSubmit = (e) => {
-  //   e.preventDefault()
-  //   this.props.signUpAndFetch(e)
-  // }
-const [firstname, setFirstname] = useState("")
+  handleSubmit = (e) => {
+    e.preventDefault()
+    this.props.signUpAndFetch(e)
+  }
 
   render() {
     return (
       <div className="signuppage">
       <div className="signupform">
-        <form type="submit">
+        <form onSubmit={this.handleSubmit}>
           <h2 className="secondary-header">Sign Up</h2>
           <input type="text" name="firstname" placeholder="first name"/><br />
           <input type="text" name="lastname" placeholder="last name"/><br />
@@ -23,8 +21,7 @@ const [firstname, setFirstname] = useState("")
           <input type="text" name="state" placeholder="state"/><br />
           <input type="text" name="image" placeholder="profile image url"/><br />
           <input type="text" name="username" placeholder="username"/><br />
-          <input type="password" name="password" placeholder="password"/><br />
-          <input type="password" name="password" placeholder="confirm password"/><br />
+          <input type="text" name="password" placeholder="password"/><br />
           <input className="button" type="Submit" placeholder="Username"/>
         </form>
       </div>
