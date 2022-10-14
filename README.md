@@ -25,8 +25,6 @@
  -On a bookclub's page, there is an information snippet including attendees, address, time, decription and name of the host. Bookclub pages also include a discussion forum where users can post comments about the bookclub.
  Users have the ability to search for reviews by entering the title of a book
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
 
 ## Requirements
 
