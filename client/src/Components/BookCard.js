@@ -23,7 +23,7 @@ class BookCard extends Component {
         body: JSON.stringify({
           status: "want to read",
           book_id: book.id,
-          user_id: this.props.user.id,
+          hero_id: this.props.user.id,
         })
       }))
         .then(resp => resp.json())
