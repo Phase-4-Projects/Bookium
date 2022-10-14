@@ -10,61 +10,74 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_11_124602) do
+ActiveRecord::Schema.define(version: 2022_10_13_232719) do
 
-  create_table "book_club_books", force: :cascade do |t|
-    t.integer "book_club_id"
-    t.integer "book_id"
-    t.string "archived"
-    t.string "status"
-    t.string "suggested_by"
-    t.string "current"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "description"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "book_club_users", force: :cascade do |t|
+  create_table "comments", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "book_club_id"
-    t.string "isAdmin"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "event_id"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "book_clubs", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "location"
+    t.string "date"
+    t.string "time"
+    t.string "description"
+    t.integer "host_id"
+    t.string "address"
+    t.string "city"
+    t.string "state"
+    t.string "zipcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "goals", force: :cascade do |t|
-    t.integer "book_club_book_id"
-    t.string "meeting_url"
-    t.string "notes"
-    t.string "complete"
-    t.string "priority"
-    t.string "pages"
-    t.datetime "deadline"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.string "content"
+    t.integer "rating"
+    t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.integer "book_club_book_id"
-    t.string "chapter"
-    t.string "question"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table "user_books", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_events", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
     t.string "first_name"
     t.string "last_name"
-    t.string "location"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
+    t.string "city"
+    t.string "state"
+    t.string "password_digest"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
