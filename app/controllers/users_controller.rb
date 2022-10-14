@@ -1,43 +1,61 @@
 class UsersController < ApplicationController
-
-   skip_before_action :authorize, only: :create
-
-   def create
-    user = User.create(user_params)
-
-    if user.valid?
-        session[:user_id] = user.id
-        render json: user, status: :created
-    else
-        render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    before_action :set_user, only: [ :update, :destroy]
+    skip_before_action :authorized, only: [:create, :profile]
+  
+    def profile
+      render json: { user: UserSerializer.new(current_user) }, status: :accepted
     end
-   end
-
-   def show
-    user = @current_user
-    render json: user, include: ['bookclubs', 'bookclubs.users', 'bookclubs.bookclub_books', 'bookclubs.bookclub_books.book', 'bookclubs.bookclub_books.goals', 'bookclubs.bookclub_books.guide_questions', 'bookclubs.bookclub_books.guide_questions.comments']
-    # render json: user
-   end
-
-   def update
-    user = @current_user
-    user.update(user_params)
-    render json: user, status: :accepted
-   end
-
-   def destroy
-    @current_user.destroy
-    head :no_content
-   end
-
-   private
-
-   def user_params
-    params.permit(:email, :first_name, :last_name, :location, :profile_color, :password, :password_confirmation, :bookclubs)
-   end
-end
-
-
-
-    
+  
+    def auth_header
+      # { Authorization: 'Bearer <token>' }
+      request.headers['Authorization']
+    end
+  
+    # GET /users
+    def index
+      @users = User.all
+  
+      render json: @users
+    end
+  
+    # GET /users/1
+    def show
+      render json: @user
+    end
+  
+    # POST /users
+    def create
+      @user = User.create(user_params)
+      if @user.valid?
+        @token = encode_token({ user_id: @user.id })
+        render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
+      else
+        render json: { error: 'failed to create user' }, status: :not_acceptable
+      end
+    end
+  
+    # PATCH/PUT /users/1
+    def update
+      if @user.update(user_params)
+        render json: @user
+      else
+        render json: @user.errors, status: :unprocessable_entity
+      end
+    end
+  
+    # DELETE /users/1
+    def destroy
+      @user.destroy
+    end
+  
+    private
+      # Use callbacks to share common setup or constraints between actions.
+      def set_user
+        @user = User.find(params[:id])
+      end
+  
+      # Only allow a trusted parameter "white list" through.
+      def user_params
+        params.require(:user).permit(:first_name, :last_name, :username, :city, :state, :password, :image)
+      end
 end
