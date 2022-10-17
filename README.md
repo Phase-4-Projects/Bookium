@@ -25,6 +25,10 @@
  - On a bookclub's page, there is an information snippet including attendees, address, time, decription and name of the host. Bookclub pages also include    a discussion forum where users can post comments about the bookclub.
  
   - Users have the ability to search for reviews by entering the title of a book
+  
+  ## Project-Setup-Instructions
+1)Installation of the Visual studio code . 2)Git cloning the repository . 3)install the API dependancies by running bundle install. 4)Then run rails db:migrate db:seed for the migrations to run and seed data to database. 5)After all the dependancies have been installed run rails s or rails server to start the server and the app will be up running.
+
 
 
 ## Requirements
