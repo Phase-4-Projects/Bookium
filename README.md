@@ -1,6 +1,8 @@
 # Title #
 
  Bookium
+ 
+ It's book club app that provides good information to users about books they can read.
 
  # Author #
 
