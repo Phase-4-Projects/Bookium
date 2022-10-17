@@ -10,7 +10,7 @@
   
  ## Live link
  
- http://bookium.vercel.app/
+ https://bookium32.herokuapp.com/
  
 ## About
 
